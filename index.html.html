@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<style>
+body {
+background-image: url("///F:/projects/1/ena.png");
+background-repeat: no repeat;
+}
+</style>
+
+<script type="text/javascript" language="JavaScript">// <![CDATA[
+ var res="21211"; 
+function check_me()
+{
+    var count=0;
+    with(document.test) {
+if (!Q1[0].checked&&!Q1[1].checked)  
+{count+=1};  
+if (!Q2[0].checked&&!Q2[1].checked)  
+{count+=1};  
+if (!Q3[0].checked&&!Q3[1].checked)  
+{count+=1};  
+if (!Q4[0].checked&&!Q4[1].checked)  
+{count+=1};  
+if (!Q5[0].checked&&!Q5[1].checked)  
+{count+=1};  
+if (count>0) alert("не на все ответила")
+        else answer();
+    }
+} 
+ 
+function control(k, f1,f2,f3,f4,f5) {
+if (k==1&&f1.checked) return true;
+if (k==2&&f2.checked) return true;
+if (k==3&&f3.checked) return true;
+if (k==4&&f4.checked) return true;
+if (k==5&&f5.checked) return true;
+return false;
+}
+
+function answer() {
+answ="";
+     with(document)    {
+    answ+=control(res.charAt(0) ,test.Q1[0],test.Q1[1])?"1":"0";
+answ+=control(res.charAt(1) ,test.Q2[0],test.Q2[1])?"1":"0";
+answ+=control(res.charAt(2) ,test.Q3[0],test.Q3[1])?"1":"0";
+answ+=control(res.charAt(3) ,test.Q4[0],test.Q4[1])?"1":"0";
+answ+=control(res.charAt(4) ,test.Q5[0],test.Q5[1])?"1":"0";
+
+showResult();
+    }
+}
+ 
+function showResult()   {
+    var nok=0;
+    var i,s;
+ 
+for (i=0; i<answ.length;i++) {nok+=answ.charAt(i)=="1"?1:0;}
+if(nok==5) s="Молодец, ты реальная прям жопа.Кодовое слово: приветеб";
+if(nok<5) s="Где-то накосячила, ну как всегда, короче";
+if(nok<3.75) s="че ты врешь то ну";
+if (nok<2.5) s="еще раз))";
+    document.test.s1.
+    value=""+nok+"."+s+". Там отмечено, где у тебя неправильно.";
+ 
+with(document.test)
+    {
+    if (answ.charAt(0)=="1") {T1.value=" + "} else {T1.value=" - "};
+   if (answ.charAt(1)=="1") {T2.value=" + "} else {T2.value=" - "};
+   if (answ.charAt(2)=="1") {T3.value=" + "} else {T3.value=" - "};
+   if (answ.charAt(3)=="1") {T4.value=" + "} else {T4.value=" - "};
+   if (answ.charAt(4)=="1") {T5.value=" + "} else {T5.value=" - "};
+     }
+}
+function showhide(obj){
+    if(obj == 'none') return 'inline';
+    else return 'none';
+}
+
+</script>
+</head>
+<body>
+<center><b>ТЕСТ?</b></center><br/><br/>
+&nbsp;&nbsp;&nbsp;<span style="color:#006699;text-decoration:underline;cursor:pointer;" onclick="document.getElementById('instruction').style.display = showhide(document.getElementById('instruction').style.display)">
+Что делать?</span>
+ <br/>
+<div id="instruction" style="display: none; width: 100%;">
+<ol>
+<li>Выбери один из двух предложенных вариантов;</li>
+<li>В конце нажми кнопку результат;</li>
+<li>Готово.</li>
+</ol>
+</div>
+<form name="test"><ol>
+<li><INPUT type="text" size="1" value="" name="T1"/><b>Что лучше?</b><br/>
+<input type="radio" value="0" name="Q1"/>Красный<br />
+<input type="radio" value="1" name="Q1"/>Сигнальный красный<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T2"/><b>Кто шутит и смешно, и обидно?</b><br/>
+<input type="radio" value="0" name="Q2"/>Мариеск<br />
+<input type="radio" value="1" name="Q2"/>Сонюха<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T3"/><b>Импульсивная</b><br/>
+<input type="radio" value="0" name="Q3"/>Музыка<br />
+<input type="radio" value="1" name="Q3"/>Рука<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T4"/><b>Самая красивая еба</b><br/>
+<input type="radio" value="0" name="Q4"/>Мариеск<br />  
+<input type="radio" value="1" name="Q4"/>Мариеск<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T5"/><b>Кто игнорирует 13 минут и выходит, когда ей пишут?</b><br/>
+<input type="radio" value="0" name="Q5"/>Мариеск<br />
+<input type="radio" value="1" name="Q5"/>Кто-то другой<br />
+<br/></li></ol>      
+<CENTER>
+<P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me()" type="button" value="результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+</CENTER>        
+</form> 
+</body>
+</html>
+
